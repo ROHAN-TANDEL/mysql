@@ -199,3 +199,332 @@ MySQL Backup Procedures:
 99. Perform Backups regularly.
 
 100. Test your backups regularly.
+
+
+
+References:
+
+Cross join:
+SELECT *
+FROM EMPLOYEE, COMPENSATION ;
+Or
+SELECT *
+FROM EMPLOYEE CROSS JOIN COMPENSATION ;
+
+STRAIGHT_JOIN:
+SELECT table112.id,table112.bval1,table112.bval2,
+table111.id,table111.aval1
+FROM table112
+STRAIGHT_JOIN table111;
+ Or
+It behaves like a inner join if given any condition.
+
+Natural Join:
+SELECT E.*, C.Salary, C.Bonus
+ FROM EMPLOYEE E NATURAL JOIN COMPENSATION C ;
+
+Or
+SELECT E.*, C.Salary, C.Bonus
+ FROM EMPLOYEE E, COMPENSATION C
+ WHERE E.EmpID = C.EmpID ;
+
+
+Condition Join:
+Example: using ON aggretated function
+SELECT *
+ FROM NATIONAL JOIN AMERICAN
+ ON NATIONAL.CompleteGames = AMERICAN.CompleteGames ;
+
+SQL Predection:
+
+ALL
+BETWEEN
+DISTINCT
+EXISTS
+IN
+LIKE
+MATCH
+NOT IN
+NOT LIKE
+NULL
+OVERLAPS
+SOME, ANY
+UNIQUE
+
+
+
+Normalities:
+First Normal Form (1NF):
+Table must be two-dimensional, with rows and columns.
+Each row contains data that pertains to one thing or one portion of a thing.
+Each column contains data for a single attribute of the thing being described.
+Each cell (intersection of row and column) of the table must be single-valued.
+All entries in a column must be of the same kind.
+Each column must have a unique name.
+No two rows may be identical.
+The order of the columns and of the rows does not matter.
+Second Normal Form (2NF):
+Table must be in first normal form (1NF).
+All non-key attributes (columns) must be dependent on the entire key.
+Third Normal Form (3NF):
+Table must be in second normal form (2NF).
+Table has no transitive dependencies.
+Domain-Key Normal Form (DK/NF):
+Every constraint on the table is a logical consequence of the definition of keys and domains.
+
+SET FUNCTIONS & AGGREGATE FUNCTIONS:
+
+COUNT
+Returns the number of rows in the specified table
+MAX
+Returns the maximum value that occurs in the specified able
+MIN
+Returns the minimum value that occurs in the specified table
+SUM
+Adds up the values in a specified column
+AVG
+Returns the average of all the values in the specified column
+
+
+TRIGONOMETRIC AND LOGARITHMIC FUNCTIONS
+
+sin, cos, tan, asin, acos, atan, sinh, cosh, tanh, log(<base>, <value>), log10(<value>). ln( <value>)
+
+JSON CONSTRUCTOR FUNCTIONS
+JSON_OBJECT
+JSON_ARRAY
+JSON_OBJECTAGG
+JSON_ARRAYAGG
+JSON QUERY FUNCTIONS
+JSON_EXISTS
+JSON_VALUE
+JSON_QUERY
+JSON_TABLE
+DATA TYPES:
+Here’s a list of all the formal data types that ISO/IEC standard SQL recognizes. In addition to these, you may define additional data types that are derived from these.
+Exact Numerics:
+INTEGER
+SMALLINT
+BIGINT
+NUMERIC
+DECIMAL
+Approximate Numerics:
+REAL
+DOUBLE PRECISION
+FLOAT
+DECFLOAT
+Binary Strings:
+BINARY
+BINARY VARYING
+BINARY LARGE OBJECT
+Boolean:
+BOOLEAN
+Character Strings:
+CHARACTER
+CHARACTER VARYING (VARCHAR)
+CHARACTER LARGE OBJECT
+NATIONAL CHARACTER
+NATIONAL CHARACTER VARYING
+NATIONAL CHARACTER LARGE OBJECT
+Datetimes:
+DATE
+TIME WITHOUT TIMEZONE
+TIMESTAMP WITHOUT TIMEZONE
+TIME WITH TIMEZONE
+TIMESTAMP WITH TIMEZONE
+Intervals:
+INTERVAL DAY
+INTERVAL YEAR
+Collection Types:
+ARRAY
+MULTISET
+Other Types:
+ROW
+XML
+
+
+DBMS RAMKRISHNA:
+Levels of Abstraction in a DBMS:
+Conceptual
+Physical
+External
+data definition language (DDL) is used to define the external and conceptual schemas
+Physical schema specifies additional storage details
+External schemas, which usually are also in terms of the data model of the DBMS, allow data access to be customized (and authorized) at the level of individual users or groups of users
+DATABASE DESIGN AND ER DIAGRAMS:
+ Requirements Analysis
+Conceptual Database Design
+Logical Database Design
+Schema Refinement
+Physical Database Design | performance
+Application and Security Design
+
+ENTITIES, ATTRIBUTES, AND ENTITY SETS:
+RELTIONSHIPS AND RELATIONSHIP SETS:
+Key Constraints
+Key Constraints for Ternary Relationships
+Weak Entities
+Class Hierarchies
+Aggregation
+Entity versus Attribute
+THE RELATIONAL MODEL:
+CASCADE:
+The CASCADE option ensures that information about an employee's policy and dependents is deleted if the corresponding Employees tuple is deleted. The Relational 1"1,,1oriel 3.5.6 T
+FOREIGN KEY (ssn) REFERENCES Employees ON DELETE CASCADE )
+INTRODUCTION TO VIEWS:
+A view is a table whose rows are not explicitly stored in the database but are computed as needed from a view definition
+Views, Data Independence, Security
+RELATIONAL ALGEBRA AND CALCULUS:
+SET OPERATIONS:
+Union
+Intersection
+Difference
+Cross product
+Division (oppo of Joins)
+Distinct
+RELATIONAL CALCULUS:
+The variant of the calculus we present in detail is called the tuple relational calculus (TRC)
+Select * from table where(# relational calculus)
+
+SQL: QUERIES, CONSTRAINTS, TRIGGERS:
+ Triggers and Advanced Integrity Constraints:
+Correlated Nested Queries:
+Pind the names of sailors who have reserved boat nv,mber 103. 
+SELECT FROM WHERE S.sname Sailors S EXISTS ( SELECT * FROM Reserves R WHERE R.bid = 103 AND R.sid = S.sid )
+Set-Comparison Operators:
+Find sailors whose rating is better than some sailor called Horatio. 
+SELECT S.sid FROM Sailors S WHERE S.rating > ANY ( SELECT FROM WHERE S2.rating Sailors S2 S2.sname = 'Horatio' )
+The GROUP BY and HAVING Clauses
+STORAGE AND INDEXING:
+INDEX DATA STRUCTURES:
+One way to organize data entries is to hash data entries on the sea.rch key
+Tree-Based Indexing:
+ An alternative to hash-based indexing is to organize records using a treelike data structure. The data entries are arranged in sorted order by search key value, and a hierarchical search data structure is maintained that directs searches to the correct page of data entries.
+COMPARISON OF FILE ORGANIZATIONS:
+
+
+Exporting Data with the SELECT ... INTO OUTFILE Statement
+
+SELECT * FROM passwd INTO OUTFILE '/tmp/tutorials.txt'
+   -> FIELDS TERMINATED BY ',' ENCLOSED BY '"'
+   -> LINES TERMINATED BY '\r\n';
+
+mysqldump -u root -p database_name table_name > dump.txt
+password *****
+ IMPORT:
+LOAD DATA LOCAL INFILE 'dump.txt' INTO TABLE mytbl;
+mysqlimport -u root -p --local --fields-terminated-by = ":" \
+   --lines-terminated-by = "\r\n"  database_name dump.txt
+password *****
+
+The SQL IN Operator
+The IN operator allows you to specify multiple values in a WHERE clause.
+The IN operator is a shorthand for multiple OR conditions.
+
+Case:
+SELECT OrderID, Quantity,
+CASE
+    WHEN Quantity > 30 THEN "The quantity is greater than 30"
+    WHEN Quantity = 30 THEN "The quantity is 30"
+    ELSE "The quantity is under 30"
+END
+FROM OrderDetails;
+
+The MySQL IFNULL() function lets you return an alternative value if an expression is NULL:
+SELECT ProductName, UnitPrice * (UnitsInStock + IFNULL(UnitsOnOrder, 0))
+FROM Products
+
+Stored Procedure Syntax
+CREATE PROCEDURE procedure_name
+AS
+sql_statement
+GO;
+
+Execute a Stored Procedure
+EXEC procedure_name;
+With param:
+CREATE PROCEDURE SelectAllCustomers @City nvarchar(30)
+AS
+SELECT * FROM Customers WHERE City = @City
+GO;
+EXEC SelectAllCustomers City = "London";
+
+Introduction to MySQL ENUM data type
+In MySQL, an ENUM is a string object whose value is chosen from a list of permitted values defined at the time of column creation.
+
+CREATE TABLE table_name (
+    ...
+    col ENUM ('value1','value2','value3'),
+    ...
+);
+
+CREATE TABLE tickets (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    title VARCHAR(255) NOT NULL,
+    priority ENUM('Low', 'Medium', 'High') NOT NULL
+);
+INSERT INTO tickets(title, priority)
+VALUES('Scan virus for computer A', 'High');
+
+Cascade 2:
+
+CREATE TABLE rooms (
+    room_no INT PRIMARY KEY AUTO_INCREMENT,
+    room_name VARCHAR(255) NOT NULL,
+    building_no INT NOT NULL,
+    FOREIGN KEY (building_no)
+        REFERENCES buildings (building_no)
+        ON DELETE CASCADE
+);
+
+
+Mysql json:
+CREATE TABLE table_name (
+    ...
+    json_column_name JSON,	
+    ...
+);
+
+Triggers:
+
+
+2
+3
+4
+5
+6
+7
+8
+DELIMITER $$
+CREATE TRIGGER  trigger_name
+[BEFORE|AFTER] [INSERT|UPDATE|DELETE] ON table_name
+FOR EACH ROW [FOLLOWS|PRECEDES] existing_trigger_name
+BEGIN
+…
+END$$
+DELIMITER ;
+
+
+DELIMITER $$
+ 
+CREATE TRIGGER before_products_update
+   BEFORE UPDATE ON products
+   FOR EACH ROW
+BEGIN
+ 	INSERT INTO price_logs(product_code,price)
+ 	VALUES(old.productCode,old.msrp);
+END$$
+ 
+DELIMITER ;
+
+
+Node.js			49.6%
+Angular			36.9%
+React				27.8%
+Spring			17.6%
+Django			13.0%
+
+Cordova			8.5% 			Spark				4.8%
+Hadoop			4.7% 			TensorFlow			7.8%
+Xamarin			7.4% 			Torch/PyTorch		1.7%
+
