@@ -528,3 +528,45 @@ Cordova			8.5% 			Spark				4.8%
 Hadoop			4.7% 			TensorFlow			7.8%
 Xamarin			7.4% 			Torch/PyTorch		1.7%
 
+MySQL
+58.6%
+SQL Server
+41.6%
+PostgreSQL
+33.3%
+MongoDB
+26.4%
+SQLite
+19.7%
+Redis
+18.5%
+Elasticsearch
+14.4%
+MariaDB
+13.5%
+Oracle
+11.1%
+Microsoft Azure (Tables, CosmosDB, SQL, etc)
+8.0%
+Memcached
+5.6%
+Google Cloud Storage
+5.5%
+Amazon DynamoDB
+5.3%
+Amazon RDS/Aurora
+5.2%
+Cassandra
+3.7%
+IBM Db2
+2.5%
+Neo4j
+2.4%
+Amazon Redshift
+2.2%
+Apache Hive
+2.2%
+Google BigQuery
+2.1%
+Apache HBase
+1.7%
